@@ -1,0 +1,27 @@
+{
+  "name": "thamthoe-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "._sw.js",
+  "scripts": {
+    "test": "node scripts/check-index-bundle.mjs",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Weerinrada/thamthoe-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Weerinrada/thamthoe-site/issues"
+  },
+  "homepage": "https://github.com/Weerinrada/thamthoe-site#readme",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.1",
+    "prettier": "^3.10.1"
+  }
+}

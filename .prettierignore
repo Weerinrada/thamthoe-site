@@ -1,0 +1,7 @@
+# Generated single-file bundles. Prettier corrupts their minified inline JS
+# (this is what caused the blank page in cadf43a). Never reformat these.
+index.html
+dhamma-thoe-*.html
+
+# macOS AppleDouble metadata files
+._*
