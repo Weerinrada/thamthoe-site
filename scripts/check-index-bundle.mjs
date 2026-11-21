@@ -41,4 +41,9 @@ if (
   console.error("FAIL: no script mounts React into #root");
 }
 
+if (!scripts[0].includes('navigator.wakeLock.request("screen")')) {
+  failed = true;
+  console.error("FAIL: wake lock acquisition is missing from the bundle");
+}
+
 process.exit(failed ? 1 : 0);

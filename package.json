@@ -4,7 +4,7 @@
   "description": "",
   "main": "._sw.js",
   "scripts": {
-    "test": "node scripts/check-index-bundle.mjs",
+    "test": "node scripts/check-index-bundle.mjs && node scripts/test-wake-lock.mjs",
     "prepare": "husky"
   },
   "repository": {
