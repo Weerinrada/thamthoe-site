@@ -46,4 +46,34 @@ if (!scripts[0].includes('navigator.wakeLock.request("screen")')) {
   console.error("FAIL: wake lock acquisition is missing from the bundle");
 }
 
+const removedFeatures = [
+  "ตรวจตาปิดแบบจำลอง",
+  "ไม่ขอสิทธิ์กล้องจริง",
+  "เสียงสวดจำลอง",
+  "เล่นเสียง",
+];
+for (const label of removedFeatures) {
+  if (html.includes(label)) {
+    failed = true;
+    console.error(
+      `FAIL: removed feature still present in index.html: ${label}`
+    );
+  }
+}
+
+const requiredFeatures = [
+  "thamtoeSessionPayload(",
+  "thamtoeMettaTarget(",
+  "thamtoeLatestMilestone(",
+  "ไปนั่งสมาธิ",
+  "ไปสวดเมตตา",
+  "ความสม่ำเสมอ",
+];
+for (const label of requiredFeatures) {
+  if (!html.includes(label)) {
+    failed = true;
+    console.error(`FAIL: expected feature missing from index.html: ${label}`);
+  }
+}
+
 process.exit(failed ? 1 : 0);

@@ -1,6 +1,6 @@
 // ธรรมเถอะ — service worker: เปิดใช้ได้แม้ไม่มีสัญญาณอินเทอร์เน็ต
 // เปลี่ยนเลขเวอร์ชันตรงนี้ทุกครั้งที่อยากให้เครื่องล้างแคชเก่า
-const VERSION = "thamtoe-v2";
+const VERSION = "thamtoe-v3";
 const SHELL = [
   "./",
   "index.html",
