@@ -51,6 +51,7 @@ const removedFeatures = [
   "ไม่ขอสิทธิ์กล้องจริง",
   "เสียงสวดจำลอง",
   "เล่นเสียง",
+  '_byType("metta")',
 ];
 for (const label of removedFeatures) {
   if (html.includes(label)) {
@@ -63,6 +64,7 @@ for (const label of removedFeatures) {
 
 const requiredFeatures = [
   "thamtoeSessionPayload(",
+  "thamtoeChantMinutes(",
   "thamtoeMettaTarget(",
   "thamtoeLatestMilestone(",
   "ไปนั่งสมาธิ",

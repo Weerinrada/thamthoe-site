@@ -51,9 +51,22 @@ const FIXED = "2026-11-24T07:30:00.000Z";
   );
 }
 {
-  const p = context.thamtoeSessionPayload("metta", 5, "metta-1", FIXED);
-  check("metta payload has the right type", p.value.type === "metta");
-  check("metta payload has the right title", p.value.title === "แผ่เมตตา");
+  const end = Date.parse(FIXED);
+  const m = context.thamtoeChantMinutes(end - 125000, end);
+  check("chant minutes come from elapsed time", m === 2);
+  check(
+    "partial minutes are floored",
+    context.thamtoeChantMinutes(end - 65000, end) === 1
+  );
+  check(
+    "a missing start counts as one minute",
+    context.thamtoeChantMinutes(null, end) === 1
+  );
+  check(
+    "reversed timestamps are clamped",
+    context.thamtoeChantMinutes(end, end - 1000) === 1
+  );
+  check("there is no separate metta session type", !/\bmetta:/.test(snippet));
 }
 {
   const p = context.thamtoeSessionPayload("chant", 0.4, "tiny", FIXED);
