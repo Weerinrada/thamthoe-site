@@ -68,7 +68,7 @@ const requiredFeatures = [
   "thamtoeMettaTarget(",
   "thamtoeLatestMilestone(",
   "ไปนั่งสมาธิ",
-  "ไปสวดเมตตา",
+  "ไปหน้าบทสวด",
   "ความสม่ำเสมอ",
 ];
 for (const label of requiredFeatures) {
