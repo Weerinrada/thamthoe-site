@@ -1,6 +1,6 @@
 // ธรรมเถอะ — service worker: เปิดใช้ได้แม้ไม่มีสัญญาณอินเทอร์เน็ต
 // เปลี่ยนเลขเวอร์ชันตรงนี้ทุกครั้งที่อยากให้เครื่องล้างแคชเก่า
-const VERSION = "thamtoe-v27";
+const VERSION = "thamtoe-v28";
 const SHELL = [
   "./",
   "index.html",
@@ -50,6 +50,44 @@ function withTimeout(promise, ms) {
     );
   });
 }
+
+async function __reminderTime() {
+  try {
+    const cache = await caches.open("thamtoe-reminder");
+    const res = await cache.match("/reminder-time");
+    if (!res) return null;
+    return (await res.text()).trim();
+  } catch (e) {
+    return null;
+  }
+}
+
+self.addEventListener("periodicsync", (event) => {
+  if (event.tag !== "reminder-check") return;
+  event.waitUntil(
+    (async () => {
+      try {
+        const time = await __reminderTime();
+        if (!time) return;
+        const parts = time.split(":");
+        const hh = Number(parts[0]) || 7;
+        const mm = Number(parts[1]) || 0;
+        const now = new Date();
+        // Only notify within a 15-minute window after the target time
+        const target = new Date();
+        target.setHours(hh, mm, 0, 0);
+        const diff = now - target;
+        if (diff >= 0 && diff < 15 * 60 * 1000) {
+          await self.registration.showNotification("ธรรมเถอะ", {
+            body: "ถึงเวลาทำวัตรแล้ว",
+            icon: "./icon-192.png",
+            badge: "./icon-192.png",
+          });
+        }
+      } catch (e) {}
+    })()
+  );
+});
 
 self.addEventListener("fetch", (event) => {
   const req = event.request;
