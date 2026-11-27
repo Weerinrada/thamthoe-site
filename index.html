@@ -1706,6 +1706,6 @@ var Id=(e)=>`${String(Math.floor(e/60)).padStart(2,"0")}:${String(e%60).padStart
             })
         }
     </script>
-</body>
+<script>try{const en=localStorage.getItem("thamtoe_reminder_enabled")==="1";const t=localStorage.getItem("thamtoe_reminder_time")||"07:00";if(en&&typeof Notification!=="undefined"&&Notification.permission==="granted"&&typeof _scheduleReminder==="function"){_scheduleReminder(true,t)}}catch(e){}</script></body>
 
 <script>window.__deferredInstallPrompt=null;window.addEventListener("beforeinstallprompt",(e)=>{e.preventDefault();window.__deferredInstallPrompt=e;window.dispatchEvent(new Event("thamtoe-install-available"))});window.addEventListener("appinstalled",()=>{window.__deferredInstallPrompt=null;window.dispatchEvent(new Event("thamtoe-install-available"))})</script></html>
